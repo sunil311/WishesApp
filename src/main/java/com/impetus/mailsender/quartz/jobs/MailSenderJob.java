@@ -75,11 +75,12 @@ public class MailSenderJob implements Job {
             List<Employee> employees = employeeService.getDataService().getEmployees(filter, mailDate);
             if (employees != null && !employees.isEmpty()) {
                 for (Employee employee : employees) {
+                    String empName = employee.getNAME().substring(0, employee.getNAME().lastIndexOf(" "));
                     if (employee.getSUBJECT().equalsIgnoreCase("Birthday")) {
                         if (counter != 0) {
-                            employee.setSUBJECT("Belated Happy " + employee.getSUBJECT());
+                            employee.setSUBJECT("Belated Happy " + employee.getSUBJECT() + "!!! " + empName);
                         } else {
-                            employee.setSUBJECT("Happy " + employee.getSUBJECT());
+                            employee.setSUBJECT("Happy " + employee.getSUBJECT() + "!!! " + empName);
                         }
                         mailService.sendEmail(employee);
                     }

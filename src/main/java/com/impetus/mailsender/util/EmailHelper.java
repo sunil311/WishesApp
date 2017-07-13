@@ -52,7 +52,7 @@ public class EmailHelper {
         String templatePath = propertiesUtil.getProperty("backgroundImagesPath");
         String selectedRandompath = EmailHelper.selectRandomBGImage(templatePath, propertiesUtil);
         String imagePath = getImagePath(employee, propertiesUtil);
-        ImageOverlay.createOverlay(selectedRandompath, imagePath, "ov" + imagePath.substring(imagePath.lastIndexOf("/") + 1));
+        ImageOverlay.createOverlay(selectedRandompath, imagePath, "ov" + imagePath.substring(imagePath.lastIndexOf("/") + 1), employee);
     }
 
     /** @param iamgeURL
@@ -241,9 +241,10 @@ public class EmailHelper {
     public static String getHtmlContent(Employee employee, String cid) {
         String htmlContent = "<html>" + "<header>" + "<title>Subject</title>" + "</header>" + "<body>"
                 + " <table width='1200px' height='700px' align='center' border='0' cellspacing='0' cellpadding='0' >" + "<tr>" + "<td>"
-                + "<div style='width: 100%;'>" + "<div style='width: 30%;'>" + "<h2>Dear " + employee.getNAME() + " </h2>" + "</div>" + "<div>"
-                + "<img src='cid:" + cid + "'/>" + "</div>" + "</div>" + "</td>" + "</tr>" + "<tr>" + "<td>" + "<h3></br>Regards</br>Team Spark</h3>"
-                + "</td>" + "</tr>" + "</table>" + "</body>" + "</html>";
+                + "<div style='width: 100%;'>" + "<div style='width: 30%;'>" + "</div>" + "<div>" + "<img src='cid:" + cid + "'/>" + "</div>"
+                + "</div>" + "</td>" + "</tr>" + "<tr>" + "<td>" + "<h1></br>"
+                + "<i><font color='green' size='3'>It is not how much we have, but how much we enjoy, that makes happiness.</i></font></br>"
+                + "<font color='black' size='4'>Cheers</br>Team Spark</font></h1>" + "</td>" + "</tr>" + "</table>" + "</body>" + "</html>";
         return htmlContent;
     }
 }
